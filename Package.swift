@@ -5,19 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "GoogleCast",
+    platforms: [.iOS(.v14)],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "GoogleCast",
-            targets: ["GoogleCast"]),
+            targets: ["GoogleCastSDK"]
+        ),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "GoogleCast"),
-        .testTarget(
-            name: "GoogleCastTests",
-            dependencies: ["GoogleCast"]),
+        .binaryTarget(
+            name: "GoogleCastSDK",
+            url: "https://dl.google.com/dl/chromecast/sdk/ios/GoogleCastSDK-ios-no-bluetooth-4.8.0_dynamic_xcframework.zip",
+            checksum: "ae6db94f6fff7720bc28faac2f5dbd0b9c5af0215a1819c4682f7060f21eb1bb"
+        )
     ]
 )
